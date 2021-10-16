@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import { Wrapper, Menu } from './styles'
+import { Wrapper, Menu, Content } from './styles'
 
 function Main() {
   return (
@@ -21,7 +21,20 @@ function Main() {
       </Menu>
 
       <Wrapper>
-        <h1>Main</h1>
+        <Content>
+          <article className="left-side">
+            <h1>
+              <span>Creative Digital</span> Design Agency<br />
+              is looking for new talen
+            </h1>
+
+            <h2>Creative Digital Design Agency is looking for new talent</h2>
+
+            <button type="button">Get started</button>
+          </article>
+
+          <div className="right-side"></div>
+        </Content>
       </Wrapper>
     </>
   )

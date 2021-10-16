@@ -73,7 +73,7 @@ export const Profile = styled.div`
 
     strong {
       display: block;
-      color: ${({ theme }) => theme.colors.textPrimary}
+      color: ${({ theme }) => theme.colors.textPrimary};
     }
 
     a {

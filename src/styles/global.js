@@ -16,7 +16,7 @@ export default createGlobalStyle`
   body {
     color: ${({ theme }) => theme.colors.textPrimary};
     background-color: ${({ theme }) => theme.colors.background};
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Asap, --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Cantarell, Arial, Helvetica,'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased !important;
     text-align: justify;
     text-justify: inter-word;

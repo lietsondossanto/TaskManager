@@ -142,7 +142,7 @@ export const Form = styled.form`
     border-radius: 6px;
     border-style: none;
     padding: 1rem;
-    font-size: 1rem;
+    font-size: 1.125rem;
     margin-top: 1.125rem;
     box-shadow: 1px 1px 1px ${({ theme }) => theme.colors.contrast};
     transition: 1s;

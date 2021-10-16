@@ -18,5 +18,7 @@ export default createGlobalStyle`
     background-color: ${({ theme }) => theme.colors.background};
     font-family: Arial, Helvetica, sans-serif;
     -webkit-font-smoothing: antialiased !important;
+    text-align: justify;
+    text-justify: inter-word;
   }
 `

@@ -22,10 +22,10 @@ function Login() {
 
   return (
     <>
-      <div>
+      <nav>
         <Burger open={open} setOpen={setOpen} />
         <Menu open={open} setOpen={setOpen} />
-      </div>
+      </nav>
 
       <Wrapper>
         <Container>

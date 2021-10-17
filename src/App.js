@@ -2,7 +2,7 @@ import React from 'react'
 
 import { ThemeProvider } from 'styled-components'
 
-import Routes from './routes/routes'
+import Routes from './routes/index'
 import GlobalStyle from './styles/global'
 import theme from './styles/theme'
 

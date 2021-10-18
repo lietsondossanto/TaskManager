@@ -7,6 +7,8 @@ import axios from 'axios'
 
 import {useHistory} from 'react-router-dom';
 
+import { firebase } from './../../Firebase/firebase'
+
 import { Wrapper, Form } from './styles'
 
 import { AiOutlineGoogle, AiOutlineArrowLeft } from 'react-icons/ai'
@@ -41,6 +43,22 @@ function Login() {
       },
   })
 
+  const handleOnClick = async (provider) => {
+    if(provider === 'google') {
+      const googleProvider = new firebase.auth.GoogleAuthProvider()
+
+      firebase.auth().signInWithPopup(googleProvider)
+        .then((response) => console.log(response))
+        .catch((error) => console.log(error))
+    }else if(provider === 'facebook') {
+      const facebookProvider = new firebase.auth.FacebookAuthProvider()
+
+      firebase.auth().signInWithPopup(facebookProvider)
+        .then((response) => console.log(response))
+        .catch((error) => console.log(error))
+    }
+  }
+
   return (
     <>
       <Wrapper>
@@ -56,23 +74,15 @@ function Login() {
           <h1>TASK<span>Manager</span></h1>
 
           <div className="socialConnect">
-            <Link to="/">
-              <a>
-                <div className="google">
-                  <div><AiOutlineGoogle /></div>
+                <button type="button" className="google" onClick={() => handleOnClick('google')}>
+                  <span className="icon"><AiOutlineGoogle /></span>
                   <span>Google</span>
-                </div>
-              </a>
-            </Link>
+                </button>
 
-            <Link to="/">
-              <a>
-                <div className="facebook">
-                  <div><GrFacebookOption /></div>
+                <button type="button" className="facebook" onClick={() => handleOnClick('facebook')}>
+                  <span className="icon"><GrFacebookOption /></span>
                   <span>Facebook</span>
-                </div>
-              </a>
-            </Link>
+                </button>
           </div>
 
           <Form onSubmit={formik.handleSubmit}>

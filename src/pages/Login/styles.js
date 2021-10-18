@@ -43,47 +43,7 @@ export const Wrapper = styled.main`
       display: flex;
       flex-direction: column;
 
-      a {
-        color: ${({ theme }) => theme.colors.contrast};
-      }
-
-      .google {
-        width: 23.813rem;
-        height: 3.75rem;
-        background-color: ${({ theme }) => theme.colors.contrast};
-        display: flex;
-        border-radius: 6px;
-        margin-top: 2.625rem;
-        transition: 60ms;
-
-        span {
-          display: flex;
-          align-items: center;
-          margin-left: 1rem;
-          color: ${({ theme }) => theme.colors.textPrimary};
-          font-size: 1rem;
-        }
-
-        div {
-          width: 4rem;
-          height: 3.75rem;
-          background-color: ${({ theme }) => theme.colors.primary};
-          font-size: 2rem;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-top-left-radius: 6px;
-          border-bottom-left-radius: 6px;
-        }
-
-        &:hover {
-          div {
-            background-color: ${({ theme }) => darken(0.06, `${theme.colors.primary}`)};
-          }
-        }
-      }
-
-      .facebook {
+      button {
         width: 23.813rem;
         height: 3.75rem;
         background-color: ${({ theme }) => theme.colors.contrast};
@@ -91,29 +51,41 @@ export const Wrapper = styled.main`
         border-radius: 6px;
         margin-top: 0.75rem;
         transition: 60ms;
+        border-style: none;
+      }
 
-        span {
-          display: flex;
-          align-items: center;
-          margin-left: 1rem;
-          color: ${({ theme }) => theme.colors.textPrimary};
-          font-size: 1rem;
-        }
+      span {
+        display: flex;
+        align-items: center;
+        margin-left: 1rem;
+        color: ${({ theme }) => theme.colors.textPrimary};
+        font-size: 1rem;
+      }
 
-        div {
-          width: 4rem;
-          height: 3.75rem;
-          background-color: ${({ theme }) => theme.colors.primary};
-          font-size: 2rem;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-top-left-radius: 6px;
-          border-bottom-left-radius: 6px;
-        }
+      .icon {
+        width: 4rem;
+        height: 3.75rem;
+        background-color: ${({ theme }) => theme.colors.primary};
+        font-size: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+        margin: 0;
+      }
 
+      .google {
         &:hover {
-          div {
+          .icon {
+            background-color: ${({ theme }) => darken(0.06, `${theme.colors.primary}`)};
+          }
+        }
+      }
+
+      .facebook {
+        &:hover {
+          .icon {
             background-color: ${({ theme }) => darken(0.06, `${theme.colors.primary}`)};
           }
         }

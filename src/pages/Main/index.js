@@ -1,9 +1,21 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 import { Wrapper, Menu, Content } from './styles'
 
 function Main() {
+  const history = useHistory()
+
+  const handleClickRedirect = () => {
+    const isLogged = !!localStorage.getItem('login')
+
+    if (isLogged) {
+      history.push("/dashboard")
+    }else {
+      history.push("/login")
+    }
+  }
+
   return (
     <>
       <Menu>
@@ -16,7 +28,7 @@ function Main() {
             <li><Link to="/"><a target="_self" href="#">Resources</a></Link></li>
           </ul>
 
-          <Link to="/login"><a target="_self"><button type="button">Sign in</button></a></Link>
+          <button type="button" onClick={() => handleClickRedirect()}>Sign in</button>
         </nav>
       </Menu>
 
@@ -30,7 +42,7 @@ function Main() {
 
             <h2>Creative Digital Design Agency is looking for new talent</h2>
 
-            <button type="button">Get started</button>
+            <button type="button" onClick={() => handleClickRedirect()}>Get started</button>
           </article>
 
           <div className="right-side"></div>

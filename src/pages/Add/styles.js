@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { darken } from 'polished'
 
 export const Wrapper = styled.main`
   height: 100%;
@@ -30,6 +31,11 @@ export const Wrapper = styled.main`
         font-size: 1.5rem;
         cursor: pointer;
         border-style: none;
+        transition: 90ms;
+
+        &:hover {
+          background-color: ${({ theme }) => darken(0.10, `${theme.colors.primary}`)};
+        }
       }
 
       .description {
@@ -80,10 +86,7 @@ export const Form = styled.form`
       margin-top: 0.5rem;
 
       &:hover {
-        background-color: ${({ theme }) => theme.colors.primary};
-        color: ${({ theme }) => theme.colors.background};
-        cursor: pointer;
-        border: 0;
+        background-color: ${({ theme }) => darken(0.02, `${theme.colors.contrast}`)};
       }
     }
 
@@ -103,9 +106,7 @@ export const Form = styled.form`
       transition: 1s;
 
       &:hover {
-        background-color: ${({ theme }) => theme.colors.contrast};
-        color: ${({ theme }) => theme.colors.textSecundary};
-        border: 0.5px solid ${({ theme }) => theme.colors.textSecundary};
+        background-color: ${({ theme }) => darken(0.06, `${theme.colors.primary}`)};
         cursor: pointer;
       }
     }

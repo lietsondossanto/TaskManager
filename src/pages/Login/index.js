@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom'
 
 import { useFormik } from "formik"
 import * as Yup from 'yup'
+import axios from 'axios'
+
+import {useHistory} from 'react-router-dom';
 
 import { Wrapper, Form } from './styles'
 
@@ -10,6 +13,8 @@ import { AiOutlineGoogle, AiOutlineArrowLeft } from 'react-icons/ai'
 import { GrFacebookOption } from 'react-icons/gr'
 
 function Login() {
+  const history = useHistory()
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -26,9 +31,15 @@ function Login() {
         .min(8, 'No mínimo 8 caracteres.')
     }),
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-    },
-  });
+
+      axios.get(`https://tlzora.deta.dev/account?email=${values.email}&password=${values.password}`)
+        .then((response) => {
+          localStorage.setItem('login', 'yes')
+          history.push("/dashboard")
+        })
+        .catch((error) => console.log(error))
+      },
+  })
 
   return (
     <>

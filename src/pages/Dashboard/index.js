@@ -4,7 +4,6 @@ import {Burger, Menu} from './../../components/index'
 
 import { Wrapper, Container, List } from './styles'
 
-// Import Lupa
 import { AiOutlineSearch } from 'react-icons/ai'
 
 function Dashboard() {
@@ -23,7 +22,10 @@ function Dashboard() {
             <h1>My Tasks</h1>
             <h2>Register your tasks and have a better monitoring of your activities</h2>
 
-            <input type="text" name="search" id="search" min="1" max="100" placeholder="Find of tasks"/>
+            <div className="searchInput">
+              <button type="button" className="iconSearch"><AiOutlineSearch /></button>
+              <input type="text" name="search" id="search" min="1" max="100" placeholder="Find of tasks"/>
+            </div>
           </header>
 
           <List>

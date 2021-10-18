@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { darken } from 'polished'
 
 import image from './../../assets/img/Reading_list-cuate.svg'
 
@@ -60,12 +61,10 @@ export const Menu = styled.header`
       border-style: none;
       box-shadow: 1px 1px 1px ${({ theme }) => theme.colors.contrast};
       border-radius: 6px;
-      transition: 1s;
+      transition: 60ms;
 
       &:hover {
-        background-color: ${({ theme }) => theme.colors.contrast};
-        color: ${({ theme }) => theme.colors.primary};
-        border: 0.5px solid ${({ theme }) => theme.colors.textSecundary};;
+        background-color: ${({ theme }) => darken(0.06, `${theme.colors.primary}`)};
         cursor: pointer;
       }
     }
@@ -112,12 +111,10 @@ export const Content = styled.div`
       background-color: ${({ theme }) => theme.colors.primary};
       color: ${({ theme }) => theme.colors.background};
       font-size: 1.125rem;
-      transition: 1s;
+      transition: 60ms;
 
       &:hover {
-        background-color: ${({ theme }) => theme.colors.contrast};
-        color: ${({ theme }) => theme.colors.primary};
-        border: 0.5px solid ${({ theme }) => theme.colors.textSecundary};;
+        background-color: ${({ theme }) => darken(0.06, `${theme.colors.primary}`)};
         cursor: pointer;
       }
     }

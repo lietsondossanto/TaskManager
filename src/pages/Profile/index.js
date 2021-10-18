@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
 import { Burger, Menu } from './../../components/index'
 
@@ -19,6 +20,12 @@ function Login() {
   const [open, setOpen] = useState(false);
 
   const History = window.history
+  const history = useHistory()
+
+  const handleClickLogout = () => {
+    history.push('/')
+    localStorage.clear();
+  }
 
   return (
     <>
@@ -64,7 +71,7 @@ function Login() {
           </Data>
 
           <Button>
-            <button type="button">Sign out</button>
+            <button type="button" onClick={() => handleClickLogout()}>Sign out</button>
           </Button>
         </Container>
       </Wrapper>

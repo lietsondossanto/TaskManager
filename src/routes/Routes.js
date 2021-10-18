@@ -1,31 +1,28 @@
 import React from 'react'
-import ProtoTypes from 'prop-types'
-import { Route, Redirect } from 'react-router-dom'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
-export default function RouteWrapper({
-  component: Component,
-  isPrivate,
-  ...rest
-}) {
-  const signed = false
+import PrivateRoute from './PrivateRoute'
 
-  if (!signed && isPrivate) {
-    return <Redirect to="/" />
-  }
+import Main from './../pages/Main'
+import Login from './../pages/Login'
+import Add from './../pages/Add'
+import Profile from './../pages/Profile'
+import Dashboard from './../pages/Dashboard'
+import PageNotFound from './../pages/PageNotFound'
 
-  if (signed && !isPrivate) {
-    return <Redirect to="/Dashboard" />
-  }
+export default function Routes() {
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" exact component={Main} />
+        <Route path="/Login" component={Login} />
 
-  return <Route {...rest} component={Component} />
-}
+        <PrivateRoute path="/add" component={Add} />
+        <PrivateRoute path="/profile" component={Profile} />
+        <PrivateRoute path="/dashboard" component={Dashboard} />
 
-RouteWrapper.propTypes = {
-  isPrivate: ProtoTypes.bool,
-  component: ProtoTypes.oneOfType([ProtoTypes.element, ProtoTypes.func])
-    .isRequired
-}
-
-RouteWrapper.defaultProps = {
-  isPrivate: false
+        <Route path="/" component={PageNotFound} />
+      </Switch>
+    </BrowserRouter>
+  )
 }

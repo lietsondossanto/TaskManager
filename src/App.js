@@ -1,20 +1,23 @@
 import React from 'react'
-
+import { Router } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 
-import Routes from './routes/index'
+import Routes from './routes/Routes'
+import history from './services/history'
 import GlobalStyle from './styles/global'
 import theme from './styles/theme'
 
-import './config/ReactotronConfig'
+// import './config/ReactotronConfig'
 
 function App() {
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <Routes />
-        <GlobalStyle />
-      </ThemeProvider>
+      <Router history={history}>
+        <ThemeProvider theme={theme}>
+          <Routes />
+          <GlobalStyle />
+        </ThemeProvider>
+      </Router>
     </>
   )
 }

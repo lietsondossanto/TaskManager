@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { darken } from 'polished'
 
 export const Wrapper = styled.main`
   height: 100%;
@@ -53,6 +54,7 @@ export const Wrapper = styled.main`
         display: flex;
         border-radius: 6px;
         margin-top: 2.625rem;
+        transition: 60ms;
 
         span {
           display: flex;
@@ -72,6 +74,12 @@ export const Wrapper = styled.main`
           justify-content: center;
           border-top-left-radius: 6px;
           border-bottom-left-radius: 6px;
+        }
+
+        &:hover {
+          div {
+            background-color: ${({ theme }) => darken(0.06, `${theme.colors.primary}`)};
+          }
         }
       }
 
@@ -82,6 +90,7 @@ export const Wrapper = styled.main`
         display: flex;
         border-radius: 6px;
         margin-top: 0.75rem;
+        transition: 60ms;
 
         span {
           display: flex;
@@ -101,6 +110,12 @@ export const Wrapper = styled.main`
           justify-content: center;
           border-top-left-radius: 6px;
           border-bottom-left-radius: 6px;
+        }
+
+        &:hover {
+          div {
+            background-color: ${({ theme }) => darken(0.06, `${theme.colors.primary}`)};
+          }
         }
       }
     }
@@ -145,12 +160,10 @@ export const Form = styled.form`
     font-size: 1.125rem;
     margin-top: 1.125rem;
     box-shadow: 1px 1px 1px ${({ theme }) => theme.colors.contrast};
-    transition: 1s;
+    transition: 60ms;
 
     &:hover {
-      background-color: ${({ theme }) => theme.colors.background};
-      color: ${({ theme }) => theme.colors.primary};
-      border: 1px solid ${({ theme }) => theme.colors.textSecundary};
+      background-color: ${({ theme }) => darken(0.06, `${theme.colors.primary}`)};
     }
   }
 `

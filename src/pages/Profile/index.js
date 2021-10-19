@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import Cookies from 'universal-cookie'
 
 import { Burger, Menu } from './../../components/index'
 
@@ -14,18 +15,21 @@ import {
 import { AiOutlineArrowLeft } from 'react-icons/ai'
 import { BiUser } from 'react-icons/bi'
 
-import photo from './../../assets/img/photo.jpg'
-
 function Login() {
   const [open, setOpen] = useState(false);
 
   const History = window.history
   const history = useHistory()
+  const cookies = new Cookies()
 
   const handleClickLogout = () => {
     history.push('/')
     localStorage.clear();
   }
+
+  const name = cookies.get('name')
+  const photo = cookies.get('photo')
+  const email = cookies.get('email')
 
   return (
     <>
@@ -47,7 +51,7 @@ function Login() {
           <Profile>
             <img src={photo} alt="photo user" />
             <div>
-              <h2><strong>Lietson Dos Santos</strong></h2>
+              <h2><strong>{name}</strong></h2>
               <p>My account</p>
             </div>
           </Profile>
@@ -56,12 +60,12 @@ function Login() {
             <div className="right-side">
               <div className="name">
                 <h3>Display name</h3>
-                <h2>Lietson Dos Santos</h2>
+                <h2>{name}</h2>
               </div>
 
               <div className="email">
                 <h3>Email</h3>
-                <h2>lietsondossanto@gmail.com</h2>
+                <h2>{email}</h2>
               </div>
             </div>
 

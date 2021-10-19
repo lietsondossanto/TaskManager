@@ -1,13 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 import { useFormik } from "formik"
 import * as Yup from 'yup'
-import axios from 'axios'
-
-import {useHistory} from 'react-router-dom';
+import Cookies from 'universal-cookie'
 
 import { firebase } from './../../Firebase/firebase'
+import api from './../../services/api'
 
 import { Wrapper, Form } from './styles'
 
@@ -16,6 +15,7 @@ import { GrFacebookOption } from 'react-icons/gr'
 
 function Login() {
   const history = useHistory()
+  const cookies = new Cookies()
 
   const formik = useFormik({
     initialValues: {
@@ -33,13 +33,19 @@ function Login() {
         .min(8, 'No mínimo 8 caracteres.')
     }),
     onSubmit: (values) => {
-
-      axios.get(`https://tlzora.deta.dev/account?email=${values.email}&password=${values.password}`)
+      api.get()
         .then((response) => {
-          localStorage.setItem('login', 'yes')
+          const { data } = response
+
+          localStorage.setItem('idToken', 'yes')
+          localStorage.setItem('providerId', 'form')
+
+          cookies.set('name', `${data[0].name}`, { path: '/' })
+          cookies.set('email', `${data[0].email}`, { path: '/' })
+          cookies.set('photo', `${data[0].photo}`, { path: '/' })
+
           history.push("/dashboard")
-        })
-        .catch((error) => console.log(error))
+        }).catch((error) => console.log(error))
       },
   })
 
@@ -48,14 +54,39 @@ function Login() {
       const googleProvider = new firebase.auth.GoogleAuthProvider()
 
       firebase.auth().signInWithPopup(googleProvider)
-        .then((response) => console.log(response))
-        .catch((error) => console.log(error))
+        .then((response) => {
+          const { credential } = response
+          const { profile } = response.additionalUserInfo
+
+          localStorage.setItem('idToken', credential.idToken)
+          localStorage.setItem('providerId', credential.providerId)
+
+          cookies.set('name', `${profile.name}`, { path: '/' })
+          cookies.set('email', `${profile.email}`, { path: '/' })
+          cookies.set('photo', `${profile.picture}`, { path: '/' })
+
+
+          history.push('/dashboard')
+        }).catch((error) => console.log(error))
+
     }else if(provider === 'facebook') {
       const facebookProvider = new firebase.auth.FacebookAuthProvider()
 
       firebase.auth().signInWithPopup(facebookProvider)
-        .then((response) => console.log(response))
-        .catch((error) => console.log(error))
+        .then((response) => {
+          const { credential } = response
+          const { profile } = response.additionalUserInfo
+          const { data } = profile.picture
+
+          localStorage.setItem('idToken', credential.idToken)
+          localStorage.setItem('providerId', credential.providerId)
+
+          cookies.set('name', `${profile.name}`, { path: '/' })
+          cookies.set('email', 'E-mail unavailable', { path: '/' })
+          cookies.set('photo', `${data.url}`, { path: '/' })
+
+          history.push('/dashboard')
+        }).catch((error) => console.log(error))
     }
   }
 

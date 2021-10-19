@@ -76,6 +76,9 @@ export const Wrapper = styled.main`
       }
 
       .google {
+        display: flex;
+        align-items: center;
+
         &:hover {
           .icon {
             background-color: ${({ theme }) => darken(0.06, `${theme.colors.primary}`)};
@@ -84,6 +87,9 @@ export const Wrapper = styled.main`
       }
 
       .facebook {
+        display: flex;
+        align-items: center;
+
         &:hover {
           .icon {
             background-color: ${({ theme }) => darken(0.06, `${theme.colors.primary}`)};

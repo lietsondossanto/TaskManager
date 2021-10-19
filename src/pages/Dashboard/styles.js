@@ -9,7 +9,7 @@ export const Wrapper = styled.main`
 export const Container = styled.div`
   margin: 5.125rem auto;
   width: 62.75rem;
-  height: 50rem;
+  height: 100%;
 
   header {
     h1 {

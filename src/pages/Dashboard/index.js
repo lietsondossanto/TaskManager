@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import {Burger, Menu} from './../../components/index'
+import {Burger, Menu, TaskList} from './../../components/index'
 
 import { Wrapper, Container, List } from './styles'
 
@@ -29,7 +29,8 @@ function Dashboard() {
           </header>
 
           <List>
-
+            <TaskList />
+            <TaskList />
           </List>
         </Container>
       </Wrapper>

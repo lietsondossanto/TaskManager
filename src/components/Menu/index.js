@@ -1,6 +1,7 @@
-import React from 'react';
+import React from 'react'
 import { Link } from 'react-router-dom'
-import { bool } from 'prop-types';
+import { bool } from 'prop-types'
+import Cookies from 'universal-cookie'
 
 import {
   Wrapper,
@@ -12,17 +13,19 @@ import {
 import { AiOutlineArrowRight } from 'react-icons/ai'
 import { MdAddToPhotos } from 'react-icons/md'
 
-import photo from './../../assets/img/photo.jpg'
-
 const Menu = ({ open, addIcon }) => {
+  const cookies = new Cookies()
 
-  function showStyled (addIcon) {
+  const name = cookies.get('name')
+  const photo = cookies.get('photo')
+
+  function showAddIcon (addIcon) {
     return addIcon ? 'none' : 'flex'
   }
 
   const style = {
-    display: showStyled(addIcon)
-  };
+    display: showAddIcon(addIcon)
+  }
 
   return (
     <>
@@ -65,7 +68,7 @@ const Menu = ({ open, addIcon }) => {
               <Profile>
                 <img src={photo} alt="photo user" />
                 <div>
-                  <strong>Lietson Dos Santos</strong>
+                  <strong>{name}</strong>
                   <Link to="/profile">
                     <a target="_self">
                       My account <span><AiOutlineArrowRight /></span>

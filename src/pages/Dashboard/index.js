@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 
 import {Burger, Menu, TaskList} from './../../components/index'
 
@@ -8,6 +9,16 @@ import { AiOutlineSearch } from 'react-icons/ai'
 
 function Dashboard() {
   const [open, setOpen] = useState(false);
+  const [allTasks, setAllTasks] = useState([])
+
+  useEffect(() => {
+    axios.get('http://102.131.41.4/task')
+      .then((response) => {
+        const { data } = response
+        setAllTasks(data)
+      })
+      .catch((error) => console.log(error))
+  }, [])
 
   return (
     <>
@@ -29,8 +40,9 @@ function Dashboard() {
           </header>
 
           <List>
-            <TaskList />
-            <TaskList />
+            {allTasks.map(todo => (
+              <TaskList key={todo.id} id={todo.id} title={todo.title} date={todo.data} />
+            ))}
           </List>
         </Container>
       </Wrapper>

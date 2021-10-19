@@ -66,7 +66,7 @@ const Menu = ({ open, addIcon }) => {
 
             <aside className="right-side">
               <Profile>
-                <img src={photo} alt="photo user" />
+                <img src={photo} alt="user photo" />
                 <div>
                   <strong>{name}</strong>
                   <Link to="/profile">

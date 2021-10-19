@@ -15,7 +15,7 @@ export const Contianer = styled.li`
   color: ${({ theme }) => theme.colors.textSecundary};
   font-size: 0.90rem;
   margin: 0.75rem auto;
-  display: flex;
+  display: ${props => props.hideTask ? 'none' : 'flex'};
   justify-content: space-between;
   align-items: center;
 
@@ -49,17 +49,19 @@ export const Contianer = styled.li`
   }
 
   .right-side {
-    width: 2rem;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    font-size: 1.3rem;
-    justify-content: center;
-    transition: 0.5s;
+    .trashIcon {
+      width: 1.30rem;
+      height: 1.30rem;
+      display: flex;
+      align-items: center;
+      font-size: 1.3rem;
+      justify-content: center;
+      transition: 0.5s;
 
-    &:hover {
-      color: #F52F41;
-      cursor: pointer;
+      &:hover {
+        color: #F52F41;
+        cursor: pointer;
+      }
     }
   }
 `;

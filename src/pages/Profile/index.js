@@ -16,15 +16,21 @@ import { AiOutlineArrowLeft } from 'react-icons/ai'
 import { BiUser } from 'react-icons/bi'
 
 function Login() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
 
   const History = window.history
   const history = useHistory()
   const cookies = new Cookies()
 
   const handleClickLogout = () => {
+    localStorage.clear()
+    window.addEventListener("beforeunload", (e) => {
+      e.preventDefault()
+      cookies.remove('name')
+      cookies.remove('photo')
+      cookies.remove('email')
+    })
     history.push('/')
-    localStorage.clear();
   }
 
   const name = cookies.get('name')
@@ -49,7 +55,7 @@ function Login() {
           </div>
 
           <Profile>
-            <img src={photo} alt="photo user" />
+            <img src={photo} alt="user photo" />
             <div>
               <h2><strong>{name}</strong></h2>
               <p>My account</p>

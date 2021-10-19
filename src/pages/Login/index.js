@@ -5,7 +5,7 @@ import { useFormik } from "formik"
 import * as Yup from 'yup'
 import Cookies from 'universal-cookie'
 
-import { firebase } from './../../Firebase/firebase'
+import { firebase } from './../../config/firebase'
 import api from './../../services/api'
 
 import { Wrapper, Form } from './styles'

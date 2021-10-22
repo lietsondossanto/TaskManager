@@ -55,6 +55,45 @@ export const Container = styled.div`
       align-items: center;
     }
   }
+
+  @media(max-width: 425px) {
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .left-side {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .Add {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: ${({ theme }) => theme.colors.contrast};
+
+          a {
+            color: ${({ theme }) => theme.colors.textPrimary};
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            span {
+              margin: 0 0.625rem 0 .30rem;
+              width: 1rem;
+            }
+          }
+        }
+      }
+
+      .right-side {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
 `;
 
 export const Profile = styled.div`
@@ -66,6 +105,10 @@ export const Profile = styled.div`
     border-radius: 50%;
     object-fit: cover;
     margin-right: 0.5rem;
+  }
+
+  .arrowDownIcon {
+    display: none;
   }
 
   div {
@@ -90,6 +133,30 @@ export const Profile = styled.div`
       }
     }
   }
+
+  @media(max-width: 425px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 3.25rem;
+      height: 3.25rem;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 0.5rem;
+    }
+
+    .arrowDownIcon {
+      display: block;
+      color: ${({ theme }) => theme.colors.textSecundary};
+      font-size: 1.3rem;
+    }
+
+    div {
+      display: none;
+    }
+  }
 `
 
 export const BurgerWrapper = styled.nav`
@@ -105,6 +172,7 @@ export const BurgerWrapper = styled.nav`
   left: 0;
   transition: transform 0.3s ease-in-out;
   transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(-100%)'};
+  z-index: 20;
 
   @media (max-width: 425px) {
     width: 100%;

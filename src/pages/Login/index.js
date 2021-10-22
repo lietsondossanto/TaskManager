@@ -1,14 +1,13 @@
 import React from 'react'
-import { Link, useHistory } from 'react-router-dom'
-
-import { useFormik } from "formik"
-import * as Yup from 'yup'
 import Cookies from 'universal-cookie'
+import * as yup from 'yup'
+import { Link, useHistory } from 'react-router-dom'
+import { Form, Formik, ErrorMessage, Field } from 'formik'
 
 import { firebase } from './../../config/firebase'
 import api from './../../services/api'
 
-import { Wrapper, Form } from './styles'
+import { Wrapper } from './styles'
 
 import { AiOutlineGoogle, AiOutlineArrowLeft } from 'react-icons/ai'
 import { GrFacebookOption } from 'react-icons/gr'
@@ -17,26 +16,13 @@ function Login() {
   const history = useHistory()
   const cookies = new Cookies()
 
-  const formik = useFormik({
-    initialValues: {
-      email: "",
-      password: "",
-    },
-    validationSchema: Yup.object({
-      email: Yup
-        .string()
-        .email("E-mail inválido.")
-        .required("O campo é obrigatório."),
-      password: Yup
-        .string()
-        .required("O campo é obrigatório.")
-        .min(8, 'No mínimo 8 caracteres.')
-    }),
-    onSubmit: (values) => {
-      api.get()
-        .then((response) => {
-          const { data } = response
 
+  const handleSubmit = (values) => {
+    api.get(`/account?email=${values.email}&password=${values.password}`)
+      .then((response) => {
+        const { data } = response
+
+        if(data.length){
           localStorage.setItem('idToken', 'yes')
           localStorage.setItem('providerId', 'form')
 
@@ -45,12 +31,25 @@ function Login() {
           cookies.set('photo', `${data[0].photo}`, { path: '/' })
 
           history.push("/dashboard")
-        }).catch((error) => console.log(error))
-      },
-  })
+        }else{
+          console.log('usuário inválido')
+        }
+      }).catch((error) => console.log(error))
+  }
+
+  const validations = yup.object({
+    email: yup
+      .string()
+      .email('Email inválido')
+      .required('O campo é obrigatório.'),
+    password: yup
+      .string()
+      .min(5, 'No mínimo 5 caracteres.')
+      .required('O campo é obrigatório.')
+    })
 
   const handleOnClick = async (provider) => {
-    if(provider === 'google') {
+    if (provider === 'google') {
       const googleProvider = new firebase.auth.GoogleAuthProvider()
 
       firebase.auth().signInWithPopup(googleProvider)
@@ -69,7 +68,7 @@ function Login() {
           history.push('/dashboard')
         }).catch((error) => console.log(error))
 
-    }else if(provider === 'facebook') {
+    } else if (provider === 'facebook') {
       const facebookProvider = new firebase.auth.FacebookAuthProvider()
 
       firebase.auth().signInWithPopup(facebookProvider)
@@ -104,55 +103,47 @@ function Login() {
         <main>
           <h1>TASK<span>Manager</span></h1>
 
-          <div className="socialConnect">
-                <button type="button" className="google" onClick={() => handleOnClick('google')}>
-                  <span className="icon"><AiOutlineGoogle /></span>
-                  <span>Google</span>
-                </button>
+          <div className="connectSocialMedia">
+            <button type="button" className="google" onClick={() => handleOnClick('google')}>
+              <span className="icon"><AiOutlineGoogle /></span>
+              <span>Google</span>
+            </button>
 
-                <button type="button" className="facebook" onClick={() => handleOnClick('facebook')}>
-                  <span className="icon"><GrFacebookOption /></span>
-                  <span>Facebook</span>
-                </button>
+            <button type="button" className="facebook" onClick={() => handleOnClick('facebook')}>
+              <span className="icon"><GrFacebookOption /></span>
+              <span>Facebook</span>
+            </button>
           </div>
 
-          <Form onSubmit={formik.handleSubmit}>
-            <div className="email">
-              <label for="email">Your email</label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                placeholder="Pleace insert your e-mail adress"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.email}
-              />
-            </div>
+          <Formik initialValues={{}} onSubmit={handleSubmit} validationSchema={validations}>
+            <Form className="formWrapper">
+              <div className="email">
+                <label htmlFor="E-mail">Your E-mail</label>
+                <Field
+                  type="email"
+                  name="email"
+                  id="email"
+                  className="Form-Field"
+                  placeholder="Pleace insert your e-mail adress"
+                />
+                <ErrorMessage component="span" name="email" className="Form-error" />
+              </div>
 
-            {formik.touched.email && formik.errors.email ? (
-              <div>{formik.errors.email}</div>
-            ) : null}
+              <div className="password">
+                <label htmlFor="password">Your password</label>
+                <Field
+                  type="password"
+                  name="password"
+                  id="password"
+                  className="Form-Field"
+                  placeholder="Pleace insert your password adress"
+                />
+                <ErrorMessage component="span" name="password" className="Form-error" />
+              </div>
 
-            <div className="password">
-              <label for="password">Your password</label>
-              <input
-                type="password"
-                name="password"
-                id="password"
-                placeholder="Pleace insert your password adress"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.password}
-              />
-            </div>
-
-            {formik.touched.password && formik.errors.password ? (
-              <div>{formik.errors.password}</div>
-            ) : null}
-
-            <button type="submit">Sign in</button>
-          </Form>
+              <button type="submit">Sign in</button>
+            </Form>
+          </Formik>
         </main>
       </Wrapper>
     </>

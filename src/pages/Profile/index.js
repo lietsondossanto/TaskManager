@@ -7,7 +7,7 @@ import { Burger, Menu } from './../../components/index'
 import {
   Wrapper,
   Container,
-  Profile,
+  ProfileWrapper,
   Data,
   Button
 } from './styles'
@@ -15,7 +15,7 @@ import {
 import { AiOutlineArrowLeft } from 'react-icons/ai'
 import { BiUser } from 'react-icons/bi'
 
-function Login() {
+function Profile() {
   const [open, setOpen] = useState(false)
 
   const History = window.history
@@ -33,9 +33,9 @@ function Login() {
     history.push('/')
   }
 
-  const name = cookies.get('name')
+  const name = cookies.get('name') || 'User Name'
   const photo = cookies.get('photo')
-  const email = cookies.get('email')
+  const email = cookies.get('email') || 'username@gmail.com'
 
   return (
     <>
@@ -47,20 +47,25 @@ function Login() {
       <Wrapper>
         <Container>
           <div className="top">
-            <button type="button" className="btnBack" onClick={() => History.back()}><AiOutlineArrowLeft /></button>
+            <button
+              type="button"
+              className="btnBack"
+              onClick={() => History.back()}>
+              <AiOutlineArrowLeft />
+            </button>
             <div className="description">
               <h1>My profile</h1>
               <h3>Preview my informations</h3>
             </div>
           </div>
 
-          <Profile>
+          <ProfileWrapper>
             <img src={photo} alt="user photo" />
             <div>
               <h2><strong>{name}</strong></h2>
               <p>My account</p>
             </div>
-          </Profile>
+          </ProfileWrapper>
 
           <Data>
             <div className="right-side">
@@ -76,12 +81,16 @@ function Login() {
             </div>
 
             <div className="left-side">
-              <span><BiUser /></span>
+              <span className="userIcon"><BiUser /></span>
             </div>
           </Data>
 
           <Button>
-            <button type="button" onClick={() => handleClickLogout()}>Sign out</button>
+            <button
+              type="button"
+              onClick={() => handleClickLogout()}>
+              Sign out
+            </button>
           </Button>
         </Container>
       </Wrapper>
@@ -89,4 +98,4 @@ function Login() {
   )
 }
 
-export default Login
+export default Profile

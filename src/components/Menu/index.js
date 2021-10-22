@@ -10,7 +10,7 @@ import {
   BurgerWrapper
 } from './styles'
 
-import { AiOutlineArrowRight } from 'react-icons/ai'
+import { AiOutlineArrowRight, AiOutlineArrowDown } from 'react-icons/ai'
 import { MdAddToPhotos } from 'react-icons/md'
 
 const Menu = ({ open, addIcon }) => {
@@ -19,7 +19,7 @@ const Menu = ({ open, addIcon }) => {
   const name = cookies.get('name')
   const photo = cookies.get('photo')
 
-  function showAddIcon (addIcon) {
+  function showAddIcon(addIcon) {
     return addIcon ? 'none' : 'flex'
   }
 
@@ -67,6 +67,11 @@ const Menu = ({ open, addIcon }) => {
             <aside className="right-side">
               <Profile>
                 <img src={photo} alt="user photo" />
+                <Link to="/profile">
+                  <a target="_self">
+                    <AiOutlineArrowDown className="arrowDownIcon" />
+                  </a>
+                </Link>
                 <div>
                   <strong>{name}</strong>
                   <Link to="/profile">

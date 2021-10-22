@@ -30,7 +30,6 @@ export const Wrapper = styled.main`
 
     h1 {
       font-size: 2rem;
-
       text-decoration: none;
       color: ${({ theme }) => theme.colors.primary};
 
@@ -39,7 +38,7 @@ export const Wrapper = styled.main`
       }
     }
 
-    .socialConnect {
+    .connectSocialMedia {
       display: flex;
       flex-direction: column;
 
@@ -98,50 +97,102 @@ export const Wrapper = styled.main`
       }
     }
   }
-`
-export const Form = styled.form`
-  margin-top: 4.25rem;
 
-  input {
-    width: 23.813rem;
-    height: 3.75rem;
-    background-color: ${({ theme }) => theme.colors.contrast};
-    color: ${({ theme }) => theme.colors.textPrimary};
-    display: flex;
-    border-radius: 6px;
-    border-style: none;
-    padding: 1rem;
-    font-size: 1rem;
-    margin-top: 0.5rem;
+  .formWrapper {
+    margin-top: 4.25rem;
+
+    input {
+      width: 23.813rem;
+      height: 3.75rem;
+      background-color: ${({ theme }) => theme.colors.contrast};
+      color: ${({ theme }) => theme.colors.textPrimary};
+      display: flex;
+      border-radius: 6px;
+      border-style: none;
+      padding: 1rem;
+      font-size: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    label {
+      color: ${({ theme }) => theme.colors.primary};
+      font-size: 1rem;
+    }
+
+    .password {
+      margin-top: 1.313rem;
+    }
+
+    button {
+      width: 23.813rem;
+      height: 3.75rem;
+      background-color: ${({ theme }) => theme.colors.primary};
+      color: ${({ theme }) => theme.colors.background};
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      border-style: none;
+      padding: 1rem;
+      font-size: 1.125rem;
+      margin-top: 1.125rem;
+      box-shadow: 1px 1px 1px ${({ theme }) => theme.colors.contrast};
+      transition: 60ms;
+
+      &:hover {
+        background-color: ${({ theme }) => darken(0.06, `${theme.colors.primary}`)};
+      }
+    }
   }
 
-  label {
-    color: ${({ theme }) => theme.colors.primary};
-    font-size: 1rem;
-  }
+  @media(max-width: 425px) {
+    header {
+      display: none;
+    }
 
-  .password {
-    margin-top: 1.313rem;
-  }
+    main {
+      width: 100%;
+      height: 70%;
+      padding: 1rem;
 
-  button {
-    width: 23.813rem;
-    height: 3.75rem;
-    background-color: ${({ theme }) => theme.colors.primary};
-    color: ${({ theme }) => theme.colors.background};
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 6px;
-    border-style: none;
-    padding: 1rem;
-    font-size: 1.125rem;
-    margin-top: 1.125rem;
-    box-shadow: 1px 1px 1px ${({ theme }) => theme.colors.contrast};
-    transition: 60ms;
+      h1 {
+        display: flex;
+        justify-content: flex-start;
+        margin-left: 3rem;
+      }
 
-    &:hover {
-      background-color: ${({ theme }) => darken(0.06, `${theme.colors.primary}`)};
+      .connectSocialMedia {
+        margin: 0 auto;
+
+        button {
+          width: 19.511rem;
+          margin-top: 0.75rem;
+          transition: 60ms;
+          border-style: none;
+        }
+        .google {
+          margin-top: 2.625rem;
+        }
+      }
+    }
+
+    .formWrapper {
+      margin: 2.625rem auto;
+
+      input {
+        width: 19.511rem;
+        font-size: 0.75rem;
+        margin-top: 0.5rem;
+      }
+
+      .password {
+        margin-top: 1.313rem;
+      }
+
+      button {
+        width: 19.511rem;
+        font-size: 1.125rem;
+      }
     }
   }
 `

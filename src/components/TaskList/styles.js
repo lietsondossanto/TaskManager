@@ -64,5 +64,54 @@ export const Contianer = styled.li`
       }
     }
   }
+
+  @media(max-width: 425px) {
+    margin: 0 auto;
+
+    &:first-child {
+      margin-top: 2rem;
+    }
+
+    width: 19.875rem;
+    font-size: 0.90rem;
+    margin: 0.75rem auto;
+
+    .left-side {
+      .Tasktitle {
+        input {
+          margin-right: 0.688rem;
+        }
+
+        h3 {
+          font-size: 1rem;
+        }
+      }
+
+      .date {
+        h4 {
+          margin-top: 0.5rem;
+          font-size: 0.625rem;
+          margin-left: 1.80rem;
+        }
+      }
+    }
+
+    .right-side {
+      .trashIcon {
+        width: 1.30rem;
+        height: 1.30rem;
+        display: flex;
+        align-items: center;
+        font-size: 1.3rem;
+        justify-content: center;
+        transition: 0.5s;
+
+        &:hover {
+          color: #F52F41;
+          cursor: pointer;
+        }
+      }
+    }
+  }
 `;
 

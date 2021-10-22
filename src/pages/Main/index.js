@@ -7,11 +7,9 @@ function Main() {
   const history = useHistory()
 
   const handleClickRedirect = () => {
-    const isLogged = !!localStorage.getItem('login')
-
-    if (isLogged) {
+    if (!!localStorage.getItem('idToken')) {
       history.push("/dashboard")
-    }else {
+    } else {
       history.push("/login")
     }
   }
@@ -36,7 +34,7 @@ function Main() {
         <Content>
           <article className="left-side">
             <h1>
-              <span>Creative Digital</span> Design Agency<br />
+              <span className="destaque">Creative Digital</span> Design Agency<br />
               is looking for new talen
             </h1>
 

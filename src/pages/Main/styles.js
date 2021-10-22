@@ -69,6 +69,27 @@ export const Menu = styled.header`
       }
     }
   }
+
+  @media(max-width: 425px) {
+    height: 2rem;
+
+    nav {
+      h1 {
+        width: 85%;
+        display: flex;
+        justify-content: flex-start;
+        font-size: 1.50rem;
+      }
+
+      ul {
+        display: none;
+      }
+
+      button {
+        display: none;
+      }
+    }
+  }
 `
 
 export const Content = styled.div`
@@ -129,5 +150,47 @@ export const Content = styled.div`
     width: 36.5rem;
     height: 36.5rem;
     background: transparent url(${image}) no-repeat right;
+  }
+
+  @media(max-width: 425px) {
+    margin-top: 3.813rem !important;
+    display: flex;
+    flex-direction: column;
+
+    .left-side {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      h1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        font-size: 1.5rem;
+        line-height: 1.75rem;
+      }
+
+      h2 {
+        margin-top: 0.75rem;
+      }
+
+      button {
+        width: 9.25rem;
+        height: 2.514rem;
+        font-size: 0.875rem;
+        margin-top: 1.25rem;
+      }
+    }
+
+    .right-side {
+      width: 100%;
+      height: 21.625rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      background: transparent url(${image}) no-repeat left;
+      background-size: 18rem;
+    }
   }
 `

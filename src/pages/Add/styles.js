@@ -52,6 +52,41 @@ export const Wrapper = styled.main`
       }
     }
   }
+
+  @media(max-width: 425px) {
+    main {
+      width:100%;
+      height: 50%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: flex-start;
+
+      .top {
+        display: flex;
+        margin-top: 2.375rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .btnBack {
+          width: 2.625rem;
+          height: 2.625rem;
+          margin-right: 0.875rem;
+          font-size: 1rem;
+        }
+
+        .description {
+          h1 {
+            font-size: 1.5rem;
+          }
+
+          h2 {
+            font-size: 0.875rem;
+          }
+        }
+      }
+    }
+  }
 `
 
 export const Form = styled.form`
@@ -108,6 +143,33 @@ export const Form = styled.form`
       &:hover {
         background-color: ${({ theme }) => darken(0.06, `${theme.colors.primary}`)};
         cursor: pointer;
+      }
+    }
+  }
+
+  @media(max-width: 425px) {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 3.625rem;
+
+    input {
+      width: 19.875rem;
+      font-size: 0.75rem;
+    }
+
+    .date {
+      margin-top: 1rem;
+    }
+
+    .btn {
+      button {
+        width: 19.875rem;
+        font-size: 0.875rem;
+        margin-top: 1rem;
       }
     }
   }

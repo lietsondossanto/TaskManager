@@ -1,24 +1,41 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import { Link } from 'react-router-dom'
 
-import {Burger, Menu, TaskList} from './../../components/index'
+import { Burger, Menu, TaskList } from './../../components/index'
+import api from './../../services/api'
 
-import { Wrapper, Container, List } from './styles'
+import { Wrapper, Container, List, Footer } from './styles'
 
 import { AiOutlineSearch } from 'react-icons/ai'
+import { BsPlusLg } from 'react-icons/bs'
 
 function Dashboard() {
   const [open, setOpen] = useState(false);
   const [allTasks, setAllTasks] = useState([])
 
-  useEffect(() => {
-    axios.get('http://102.131.41.4/task')
+  let TaskSearch = []
+
+  useEffect(async () =>{
+    await api.get('/task')
       .then((response) => {
         const { data } = response
         setAllTasks(data)
       })
       .catch((error) => console.log(error))
   }, [])
+
+  const handlerSearchInput = (value) => {
+    allTasks.map(item => {
+      if(item.title.toLowerCase() === value.toLowerCase()){
+        TaskSearch.push(item)
+        return TaskSearch
+      }
+    })
+  }
+
+  const handlerClickButtonSearch = () => {
+    setAllTasks(TaskSearch)
+  }
 
   return (
     <>
@@ -30,22 +47,50 @@ function Dashboard() {
       <Wrapper>
         <Container>
           <header>
-            <h1>My Tasks</h1>
-            <h2>Register your tasks and have a better monitoring of your activities</h2>
+            <article>
+              <h1>My Tasks</h1>
+              <h2>Register your tasks and have a better <span>monitoring</span> of your activities</h2>
+            </article>
 
             <div className="searchInput">
-              <button type="button" className="iconSearch"><AiOutlineSearch /></button>
-              <input type="text" name="search" id="search" min="1" max="100" placeholder="Find of tasks"/>
+              <button
+                type="button"
+                className="iconSearch"
+                onClick={() => handlerClickButtonSearch()}>
+                  <AiOutlineSearch />
+              </button>
+              <input
+                type="text"
+                name="search"
+                id="search"
+                min="1"
+                max="100"
+                placeholder="Find of tasks"
+                onChange={(e) => handlerSearchInput(e.target.value)}
+              />
             </div>
           </header>
 
           <List>
-            {allTasks.map(todo => (
-              <TaskList key={todo.id} id={todo.id} title={todo.title} date={todo.data} />
+            {allTasks.map(item => (
+              <TaskList
+                key={item.id}
+                id={item.id}
+                title={item.title}
+                date={item.data}
+              />
             ))}
           </List>
         </Container>
       </Wrapper>
+
+      <Footer>
+        <div>
+          <Link to="/add">
+            <button type="button"><BsPlusLg /></button>
+          </Link>
+        </div>
+      </Footer>
     </>
   );
 }

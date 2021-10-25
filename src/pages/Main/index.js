@@ -18,14 +18,12 @@ function Main() {
     <>
       <Menu>
         <nav>
-          <h1><Link to="/"><a target="_self">TASK<span>Manager</span></a></Link></h1>
-
+          <h1><Link to="/">TASK<span>Manager</span></Link></h1>
           <ul>
-            <li><Link to="/"><a target="_self" href="#">About US</a></Link></li>
-            <li><Link to="/"><a target="_self" href="#">Cases</a></Link></li>
-            <li><Link to="/"><a target="_self" href="#">Resources</a></Link></li>
+            <li><Link to="/">About US</Link></li>
+            <li><Link to="/">Cases</Link></li>
+            <li><Link to="/">Resources</Link></li>
           </ul>
-
           <button type="button" onClick={() => handleClickRedirect()}>Sign in</button>
         </nav>
       </Menu>
@@ -34,7 +32,8 @@ function Main() {
         <Content>
           <article className="left-side">
             <h1>
-              <span className="destaque">Creative Digital</span> Design Agency<br />
+              <span className="destaque">Creative Digital</span> 
+              Design Agency<br />
               is looking for new talen
             </h1>
 
@@ -42,7 +41,6 @@ function Main() {
 
             <button type="button" onClick={() => handleClickRedirect()}>Get started</button>
           </article>
-
           <div className="right-side"></div>
         </Content>
       </Wrapper>

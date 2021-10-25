@@ -28,26 +28,6 @@ export const Container = styled.div`
         align-items: center;
         justify-content: center;
       }
-
-      .Add {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: ${({ theme }) => theme.colors.contrast};
-
-        a {
-          color: ${({ theme }) => theme.colors.textPrimary};
-          text-decoration: none;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-
-          span {
-            margin: 0 0.625rem 0 1.75rem;
-            width: 1rem;
-          }
-        }
-      }
     }
 
     .right-side {
@@ -94,7 +74,31 @@ export const Container = styled.div`
       }
     }
   }
-`;
+`
+
+export const AddIcon = styled.div`
+  display: ${({ showIconAdd }) => showIconAdd ? 'flex' : 'none'};
+  align-items: center;
+  justify-content: center;
+  background-color: ${({ theme }) => theme.colors.contrast};
+
+  a {
+    color: ${({ theme }) => theme.colors.textPrimary};
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    span {
+      margin: 0 0.625rem 0 1.75rem;
+      width: 1rem;
+    }
+  }
+
+  @media(max-width: 425px) {
+    display: none;
+  }
+`
 
 export const Profile = styled.div`
   display: flex;
@@ -105,6 +109,7 @@ export const Profile = styled.div`
     border-radius: 50%;
     object-fit: cover;
     margin-right: 0.5rem;
+    background-color: ${({ theme }) => theme.colors.background};
   }
 
   .arrowDownIcon {
@@ -115,7 +120,8 @@ export const Profile = styled.div`
     text-align: right;
 
     strong {
-      display: block;
+      display: flex;
+      justify-content: flex-start;
       color: ${({ theme }) => theme.colors.textPrimary};
     }
 
@@ -218,4 +224,4 @@ export const BurgerWrapper = styled.nav`
       }
     }
   }
-`;
+`

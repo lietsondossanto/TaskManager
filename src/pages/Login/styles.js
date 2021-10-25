@@ -145,6 +145,20 @@ export const Wrapper = styled.main`
     }
   }
 
+  @media (max-width: 1024px) {
+    main {
+      width: 40%;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 768px) {
+    main {
+      width: 55%;
+      margin: 0 auto;
+    }
+  }
+
   @media(max-width: 425px) {
     header {
       display: none;

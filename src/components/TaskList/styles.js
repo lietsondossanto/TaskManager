@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import { darken } from 'polished'
 
-export const Contianer = styled.li`
+export const Container = styled.li`
   &:first-child {
     margin-top: 2rem;
   }

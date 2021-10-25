@@ -26,9 +26,9 @@ function Profile() {
     localStorage.clear()
     window.addEventListener("beforeunload", (e) => {
       e.preventDefault()
-      cookies.remove('name')
-      cookies.remove('photo')
-      cookies.remove('email')
+      cookies.remove('name', { path: '/' })
+      cookies.remove('photo', { path: '/' })
+      cookies.remove('email', { path: '/' })
     })
     history.push('/')
   }
@@ -41,7 +41,7 @@ function Profile() {
     <>
       <nav>
         <Burger open={open} setOpen={setOpen} />
-        <Menu open={open} setOpen={setOpen} />
+        <Menu showIconAdd={true} open={open} setOpen={setOpen} />
       </nav>
 
       <Wrapper>
@@ -60,7 +60,7 @@ function Profile() {
           </div>
 
           <ProfileWrapper>
-            <img src={photo} alt="user photo" />
+            <img src={photo} alt="user pictore" />
             <div>
               <h2><strong>{name}</strong></h2>
               <p>My account</p>

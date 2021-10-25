@@ -6,6 +6,7 @@ import Cookies from 'universal-cookie'
 import {
   Wrapper,
   Container,
+  AddIcon,
   Profile,
   BurgerWrapper
 } from './styles'
@@ -13,19 +14,11 @@ import {
 import { AiOutlineArrowRight, AiOutlineArrowDown } from 'react-icons/ai'
 import { MdAddToPhotos } from 'react-icons/md'
 
-const Menu = ({ open, addIcon }) => {
+const Menu = ({ open, showIconAdd }) => {
   const cookies = new Cookies()
 
   const name = cookies.get('name')
   const photo = cookies.get('photo')
-
-  function showAddIcon(addIcon) {
-    return addIcon ? 'none' : 'flex'
-  }
-
-  const style = {
-    display: showAddIcon(addIcon)
-  }
 
   return (
     <>
@@ -37,47 +30,35 @@ const Menu = ({ open, addIcon }) => {
                 <BurgerWrapper open={open}>
                   <ul>
                     <li>
-                      <Link to="/">
-                        <a target="_self">About US</a>
-                      </Link>
+                      <Link to="/">About US</Link>
                     </li>
                     <li>
-                      <Link to="/">
-                        <a target="_self">Cases</a>
-                      </Link>
+                      <Link to="/">Cases</Link>
                     </li>
                     <li>
-                      <Link to="/">
-                        <a target="_self">Resources</a>
-                      </Link>
+                      <Link to="/">Resources</Link>
                     </li>
                   </ul>
                 </BurgerWrapper>
               </div>
 
-              <div className="Add" style={style}>
+              <AddIcon showIconAdd={showIconAdd}>
                 <Link to="/add">
-                  <a target="_self">
-                    <span><MdAddToPhotos /></span>Add Task
-                  </a>
+                  <span><MdAddToPhotos /></span>Add Task
                 </Link>
-              </div>
+              </AddIcon>
             </div>
 
             <aside className="right-side">
               <Profile>
-                <img src={photo} alt="user photo" />
+                <img src={photo} alt="User pictore" />
                 <Link to="/profile">
-                  <a target="_self">
-                    <AiOutlineArrowDown className="arrowDownIcon" />
-                  </a>
+                  <AiOutlineArrowDown className="arrowDownIcon" />
                 </Link>
                 <div>
                   <strong>{name}</strong>
                   <Link to="/profile">
-                    <a target="_self">
-                      My account <span><AiOutlineArrowRight /></span>
-                    </a>
+                    My account <span><AiOutlineArrowRight /></span>
                   </Link>
                 </div>
               </Profile>

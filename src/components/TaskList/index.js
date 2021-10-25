@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import axios from 'axios'
 
-import { Contianer } from './styles'
+import api from './../../services/api'
+
+import { Container } from './styles'
 
 import { BiTrash } from 'react-icons/bi'
 
@@ -27,7 +28,7 @@ const TaskList = ({title, date, id}) => {
   }
 
   const handleClickDelete = (id) => {
-    axios.delete(`http://102.131.41.4/task/${id}`)
+    api.delete(`/task/${id}`)
       .then((response) => {
         setDeleteTask(true)
         console.log(response.data.message)
@@ -37,7 +38,7 @@ const TaskList = ({title, date, id}) => {
 
   return (
     <>
-      <Contianer hideTask={deleteTask}>
+      <Container hideTask={deleteTask}>
         <div className="left-side">
           <div className="Tasktitle">
             <div className="checkbox">
@@ -59,7 +60,7 @@ const TaskList = ({title, date, id}) => {
             onClick={() => handleClickDelete(id)}
           />
         </div>
-      </Contianer>
+      </Container>
     </>
   )
 }

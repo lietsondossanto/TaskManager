@@ -70,12 +70,30 @@ export const Menu = styled.header`
     }
   }
 
+  @media(max-width: 768px) {
+    nav {
+      h1 {
+        width: 40%;
+        display: flex;
+        justify-content: flex-start;
+      }
+
+      ul {
+        display: flex;
+      }
+
+      button {
+        display: none;
+      }
+    }
+  }
+
   @media(max-width: 425px) {
     height: 2rem;
 
     nav {
       h1 {
-        width: 85%;
+        width: 100%;
         display: flex;
         justify-content: flex-start;
         font-size: 1.50rem;
@@ -152,6 +170,48 @@ export const Content = styled.div`
     background: transparent url(${image}) no-repeat right;
   }
 
+  @media(max-width: 1440px) {
+    .left-side {
+      width: 100%;
+    }
+
+    .right-side {
+      width: 80%;
+      background-size: 30rem;
+    }
+  }
+
+  @media(max-width: 1024px) {
+    width: 90%;
+
+    .left-side {
+      width: 50%;
+      margin: 0;
+    }
+
+    .right-side {
+      width: 50%;
+      background-size: 25rem;
+    }
+  }
+
+  @media(max-width: 768px) {
+    width: 90%;
+
+    .left-side {
+      width: 40%
+      ;
+      h1 {
+        font-size: 2rem;
+      }
+    }
+
+    .right-side {
+      width: 70%;
+      background-size: 25rem;
+    }
+  }
+
   @media(max-width: 425px) {
     margin-top: 3.813rem !important;
     display: flex;
@@ -167,7 +227,7 @@ export const Content = styled.div`
         flex-direction: column;
         justify-content: flex-start;
         font-size: 1.5rem;
-        line-height: 1.75rem;
+        line-height: 2.30rem;
       }
 
       h2 {

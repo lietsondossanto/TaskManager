@@ -15,13 +15,12 @@ function Dashboard() {
 
   let TaskSearch = []
 
-  useEffect(async () =>{
-    await api.get('/task')
+  useEffect(() => {
+    api.get('/task')
       .then((response) => {
         const { data } = response
         setAllTasks(data)
-      })
-      .catch((error) => console.log(error))
+      }).catch((error) => console.log(error))
   }, [])
 
   const handlerSearchInput = (value) => {
@@ -36,12 +35,11 @@ function Dashboard() {
   const handlerClickButtonSearch = () => {
     setAllTasks(TaskSearch)
   }
-
   return (
     <>
       <nav>
         <Burger open={open} setOpen={setOpen} />
-        <Menu open={open} setOpen={setOpen} />
+        <Menu showIconAdd={true} open={open} setOpen={setOpen} />
       </nav>
 
       <Wrapper>
@@ -57,7 +55,7 @@ function Dashboard() {
                 type="button"
                 className="iconSearch"
                 onClick={() => handlerClickButtonSearch()}>
-                  <AiOutlineSearch />
+                <AiOutlineSearch />
               </button>
               <input
                 type="text"
@@ -92,7 +90,7 @@ function Dashboard() {
         </div>
       </Footer>
     </>
-  );
+  )
 }
 
 export default Dashboard

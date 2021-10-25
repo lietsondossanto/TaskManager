@@ -16,7 +16,6 @@ function Login() {
   const history = useHistory()
   const cookies = new Cookies()
 
-
   const handleSubmit = (values) => {
     api.get(`/account?email=${values.email}&password=${values.password}`)
       .then((response) => {
@@ -94,9 +93,7 @@ function Login() {
       <Wrapper>
         <header>
           <nav>
-            <Link to="/">
-              <a target="_self"><AiOutlineArrowLeft /></a>
-            </Link>
+            <Link to="/"><AiOutlineArrowLeft /></Link>
           </nav>
         </header>
 

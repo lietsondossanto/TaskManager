@@ -82,6 +82,7 @@ export const ProfileWrapper = styled.div`
     border-radius: 50%;
     object-fit: cover;
     margin-right: 0.5rem;
+    background-color: ${({ theme }) => theme.colors.contrast};
   }
 
   div {
@@ -89,7 +90,8 @@ export const ProfileWrapper = styled.div`
 
     h2 {
       strong {
-        display: block;
+        display: flex;
+        justify-content: flex-start;
         color: ${({ theme }) => theme.colors.textPrimary};
         font-size: 1.5rem;
       }
@@ -145,7 +147,16 @@ export const Data = styled.div`
       font-size: 1.20rem;
     }
 
+    .name {
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: column;
+    }
+
     .email {
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: column;
       margin-top: 2rem;
     }
   }

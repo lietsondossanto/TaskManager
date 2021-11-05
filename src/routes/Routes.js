@@ -3,8 +3,9 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import PrivateRoute from './PrivateRoute'
 
-import Main from './../pages/Main'
-import Login from './../pages/Login'
+import Home from './../pages/Home'
+import SingIn from './../pages/SingIn'
+import SingUp from './../pages/SingUp'
 import Add from './../pages/Add'
 import Profile from './../pages/Profile'
 import Dashboard from './../pages/Dashboard'
@@ -14,8 +15,9 @@ export default function Routes() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" exact component={Main} />
-        <Route path="/Login" component={Login} />
+        <Route path="/" exact component={Home} />
+        <Route path="/SingIn" component={SingIn} />
+        <Route path="/SingUp" component={SingUp} />
 
         <PrivateRoute path="/add" component={Add} />
         <PrivateRoute path="/profile" component={Profile} />

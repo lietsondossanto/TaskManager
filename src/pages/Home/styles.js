@@ -97,10 +97,6 @@ export const Menu = styled.header`
       }
 
       ul {
-        display: flex;
-      }
-
-      button {
         display: none;
       }
     }

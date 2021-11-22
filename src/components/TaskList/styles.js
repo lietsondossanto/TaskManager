@@ -48,7 +48,9 @@ export const Container = styled.li`
   }
 
   .right-side {
-    .trashIcon {
+    display: flex;
+
+    .icons {
       width: 1.30rem;
       height: 1.30rem;
       display: flex;
@@ -58,8 +60,21 @@ export const Container = styled.li`
       transition: 0.5s;
 
       &:hover {
-        color: #F52F41;
         cursor: pointer;
+      }
+    }
+
+    .pencil {
+      &:hover {
+        color: #E3C800;
+      }
+    }
+
+    .trashIcon {
+      margin-right: .30rem;
+
+      &:hover {
+        color: #F52F41;
       }
     }
   }

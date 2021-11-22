@@ -4,18 +4,22 @@ import api from './../../services/api'
 
 import { Container } from './styles'
 
-import { BiTrash } from 'react-icons/bi'
+import { BiTrash, BiPencil } from 'react-icons/bi'
 
 const TaskList = ({title, date, id}) => {
   const [checked, setChecked] = useState(false)
   const [deleteTask, setDeleteTask] = useState(false)
 
-  function showTrash (checked) {
+  const showTrash = (checked) => {
     return checked ? 'flex' : 'none'
   }
 
-  function strikeOut (checked) {
+  const strikeOut = (checked) => {
     return checked ? 'line-through' : 'none'
+  }
+
+  const handleClickEdite = () => {
+    
   }
 
   const style = {
@@ -55,9 +59,13 @@ const TaskList = ({title, date, id}) => {
 
         <div className="right-side">
           <BiTrash
-            className="trashIcon"
+            className="trashIcon icons"
             style={style.icon}
             onClick={() => handleClickDelete(id)}
+          />
+          <BiPencil 
+            className="pencil icons" 
+            onClick={() => handleClickEdite()}
           />
         </div>
       </Container>

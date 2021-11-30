@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import * as yup from 'yup'
 import { Form, Formik, ErrorMessage, Field } from 'formik'
+import { useHistory } from 'react-router-dom'
 
 import { Wrapper } from './styles'
 
@@ -12,12 +13,14 @@ import { AiOutlineArrowLeft } from 'react-icons/ai'
 function Add() {
   const [open, setOpen] = useState(false)
 
+  const history = useHistory()
   const History = window.history
   
   const handleSubmit = (values) => {
     api.post("/task", values)
     .then((response) => {
       alert('cadastrado')
+      history.push("/dashboard")
     })
     .catch((error) => console.log(error))
   }

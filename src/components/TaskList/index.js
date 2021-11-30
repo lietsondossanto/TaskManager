@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
 import api from './../../services/api'
 
@@ -7,6 +8,8 @@ import { Container } from './styles'
 import { BiTrash, BiPencil } from 'react-icons/bi'
 
 const TaskList = ({title, date, id}) => {
+  const history = useHistory()
+
   const [checked, setChecked] = useState(false)
   const [deleteTask, setDeleteTask] = useState(false)
 
@@ -19,7 +22,8 @@ const TaskList = ({title, date, id}) => {
   }
 
   const handleClickEdite = () => {
-    
+    history.push('/add')
+    //Editar A task(Implementar funcionabilidade)
   }
 
   const style = {
@@ -40,6 +44,27 @@ const TaskList = ({title, date, id}) => {
       .catch((error) => console.log(error))
   }
 
+  const validateTheDate = (value) => {
+    const date = new Date()
+    const today = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
+    const yesterday = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate() - 1}`
+    const tomorrow = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate() + 1}`
+    let day = ''
+    
+    if(today == value){
+      day = 'Today'
+    }else if(yesterday == value) {
+      day = 'yesterday'
+    }else if(tomorrow == value){
+      day = 'tomorrow'
+    }else {
+      day = value
+    }
+
+    return day
+  }
+
+  validateTheDate()
   return (
     <>
       <Container hideTask={deleteTask}>
@@ -53,7 +78,7 @@ const TaskList = ({title, date, id}) => {
           </div>
 
           <span className="date">
-            <h4>{date}</h4>
+            <h4>{validateTheDate(date)}</h4>
           </span>
         </div>
 

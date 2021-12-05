@@ -16,7 +16,7 @@
 
 The base technology for creating this project was the [React](https://reactjs.org/)(`17.0.2`) to develop this project I took about 4 days after some trial and error, This website is fully responsive and can be accessed from any device, you can access the layout of this project by clicking [here](https://www.figma.com/file/TVT3dZ8snysCn9XgLmtjJX/SnirTask?node-id=3%3A2242).<br><br>
 
-> You can castrate yourself in `TaskManager` from your Gmail account or Facebook account.
+> You can castrate yourself in `TaskManager` from your Email or Facebook account.
 
 ## ✨ preview
 
